@@ -97,7 +97,7 @@ where p.lib_potion = 'Potion magique n°2';
 select max(r.superficie) from resserre r;
 
 --23. Nombre d'habitants par village (nom du village, nombre). (7 lignes)
-select v.nom_village, count(*) as nombre 
+select v.nom_village, count(*)
 from village v
 inner join habitant h on v.num_village = h.num_village
 group by v.nom_village ;
@@ -114,7 +114,7 @@ inner join habitant h on v.num_village = h.num_village
 group by p.num_province ;
 
 --26. Nombre de potions différentes absorbées par chaque habitant (nom et nombre). (9lignes)
-select h.nom, count(*) from habitant h 
+select h.nom, count(distinct a.num_potion) from habitant h 
 inner join absorber a on h.num_hab = a.num_hab
 group by h.num_hab 
 
